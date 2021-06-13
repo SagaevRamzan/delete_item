@@ -19,7 +19,9 @@ export const loadTodos=()=>{
     }
 }
 export const todoDelete=(id)=>{
+
     return function (dispatch){
+        dispatch({type:"deleting",payload:id})
         fetch(`https://jsonplaceholder.typicode.com/photos/${id}`)
             .then(response=>response.json())
             .then((json)=>{

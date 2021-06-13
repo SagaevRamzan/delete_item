@@ -32,7 +32,25 @@ const reducer=(state=initialState,action)=>{
                     if(todo.id===action.payload){
                         return false
                     }
+
                     return true
+                    }
+                    )
+            }
+        case 'deleting':
+            return  {
+                ...state,
+                todos: state.todos.map((todo)=>{
+                        if(todo.id===action.payload){
+
+                            return {
+                                ...todo,
+
+                                deleting:true
+
+                            }
+                        }
+                        return todo
                     }
 
                 )
@@ -46,7 +64,8 @@ const reducer=(state=initialState,action)=>{
                             return {
                                 ...todo,
 
-                               title:action.payload
+                               title:action.payload,
+
                             }
                         }
                         return todo
