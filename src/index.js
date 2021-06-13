@@ -11,6 +11,7 @@ const initialState={
     todos:[],
     loading:false
 };
+
 const reducer=(state=initialState,action)=>{
     switch (action.type){
         case 'start':
@@ -32,6 +33,23 @@ const reducer=(state=initialState,action)=>{
                         return false
                     }
                     return true
+                    }
+
+                )
+            }
+        case 'change':
+            return  {
+                ...state,
+                todos: state.todos.map((todo)=>{
+                        if(todo.id===action.id){
+
+                            return {
+                                ...todo,
+
+                               title:action.payload
+                            }
+                        }
+                        return todo
                     }
 
                 )

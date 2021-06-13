@@ -1,3 +1,7 @@
+import './App'
+
+
+
 export const loadTodos=()=>{
 
     return function (dispatch){
@@ -21,8 +25,25 @@ export const todoDelete=(id)=>{
             .then((json)=>{
                 dispatch({
                     type:"delete",
-                    payload:id
+                    payload:id,
+
+
                 })
+            })
+    }
+}
+export const todoChange=(id,x)=>{
+
+    return function (dispatch){
+        fetch(`https://jsonplaceholder.typicode.com/photos/${id}`)
+            .then(response=>response.json())
+            .then((json)=>{
+                dispatch({
+                    type:"change",
+                    id:id,
+
+                    payload:x
+                    })
             })
     }
 }
